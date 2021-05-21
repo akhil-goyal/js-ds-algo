@@ -1,10 +1,41 @@
-const arrayOne = [1, 4, 7, 9];
-const arrayTwo = [2, 3, 6, 8];
+const dataSet = [1, 2, 3, 6, 4, 3, 6, 7];
 
-const mergeArrays = (arr1, arr2) => {
+// METHOD 1 ::: O(n^2)
 
-    console.log(...arr1, ...arr2);
+// const checkRepeat = data => {
 
+//     for (let i = 0; i < data.length; i++) {
+//         for (let j = 1; j < data.length; j++) {
+//             if (data[i] === data[j]) {
+//                 return data[i];
+//             }
+//         }
+//     }
+//     return undefined;
+// }
+
+// const result = checkRepeat(dataSet);
+
+// console.log(result);
+
+// --------------------------------------------------------
+
+// METHOD 2 (Using Hash Tables)
+
+const checkRepeat = data => {
+
+    let map = {};
+
+    for (let i = 0; i < data.length; i++) {
+        if (map[data[i]] !== undefined) {
+            return data[i]
+        } else {
+            map[data[i]] = i;
+        }
+    }
+    return undefined;
 }
 
-mergeArrays(arrayOne, arrayTwo);
+const result = checkRepeat(dataSet);
+
+console.log(result);
